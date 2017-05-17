@@ -123,7 +123,7 @@ $.ajax({ url: "listNotes.php",
 
             var timestamp = moment(data.Notes[i].created_at).format('LLL');
 
-                $('#notes_container').append('<div class="col-sm-3 note"><div class="inner-note"><span class="note-title-label"> Title: </span>' + data.Notes[i].title + '<button type="button" data-toggle="modal"  class="btn btn-default btn-xs edit-btn" id='+data.Notes[i].id+'><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button><br/><span class="note-body-label">Body: </span>' + data.Notes[i].body + '<br/><div class="createdby-div"><br /><span class="note-createdby-label">Created By: </span>' +data.Notes[i].createdby+ ', on '+ timestamp+'</div></div></div>');
+                $('#notes_container').append('<div class="col-sm-3 note"><div class="inner-note"><span class="note-title-label"> Title: </span>' + data.Notes[i].title + '<button type="button" data-toggle="modal"  class="btn btn-default btn-xs edit-btn" id='+data.Notes[i].id+'><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button><br/><span class="note-body-label">Body: </span>' + data.Notes[i].body + '<br/><div class="createdby-div"><br /><span class="note-createdby-label">Created By: </span>' +data.Notes[i].createdby+ ',<br /> on '+ timestamp+'</div></div></div>');
 
           }
 
