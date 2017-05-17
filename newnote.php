@@ -5,7 +5,7 @@ $email =  $_SESSION['email'];
 //echo $email;
   if($_SESSION['signed_in']!==1){
     echo '<script type="text/javascript">
-             window.location = "signin.php";
+             window.location = "signIn.php";
         </script>';
   }
 
