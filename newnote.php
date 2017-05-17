@@ -2,7 +2,7 @@
 <?php
   session_start();
 $email =  $_SESSION['email'];
-echo $email;
+//echo $email;
   if($_SESSION['signed_in']!==1){
     echo '<script type="text/javascript">
              window.location = "signin.php";
@@ -28,14 +28,14 @@ echo $email;
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#">Sticky Notes</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Note List <span class="sr-only">(current)</span></a></li>
-        <li  class="active"><a href="newnote.php">Create New Note</a></li>
+        <li><a href="index.php">Note List </a></li>
+        <li  class="active"><a href="newnote.php">Create New Note <span class="sr-only">(current)</span></a></li>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -61,7 +61,7 @@ echo $email;
 <div class="form-group row">
   <label for="example-search-input" class="col-2 col-form-label">Body</label>
   <div class="col-10">
-    <textarea class="form-control" type="search" placeholder="Body goes here.." id="note_body_create" name="note_body_create"></textarea>
+    <textarea class="form-control" type="search" placeholder="Body goes here.." id="note_body_create" name="note_body_create" maxlength="255"></textarea>
   </div>
 </div>
 <div class="form-group row">

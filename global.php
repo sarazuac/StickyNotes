@@ -2,7 +2,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "password";
-$dbname = "notes";
+$password = "Qwerty123";
+$dbname = "stickynotes";
 
  ?>

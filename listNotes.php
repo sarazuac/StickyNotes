@@ -2,9 +2,11 @@
 include 'global.php';
 
 $noteID = isset($_GET['noteID']) ? $_GET['noteID'] : '';
+session_start();
+$createdby = $_SESSION['email'];
 
  if($noteID !=''){
-   $noteID = "WHERE id = " . $noteID;
+   $noteID = " AND id = " . $noteID;
 }
 // echo $createdby ;
 // echo $title;
@@ -19,7 +21,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM notes ". $noteID;
+$sql = "SELECT * FROM notes WHERE createdby = '$createdby'". $noteID;
 //$sql = "SELECT id, name, email, password FROM users WHERE email = '$email'";
 $result = $conn->query($sql);
 

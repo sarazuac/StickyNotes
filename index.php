@@ -1,7 +1,6 @@
 
 <?php
   session_start();
-  //echo $_SESSION['signed_in'];
 
   if($_SESSION['signed_in']!==1){
     echo '<script type="text/javascript">
@@ -48,7 +47,7 @@
 
 <body>
 <h2>Notes</h2>
-<button type="button" class="btn btn-default btn-lg" id="myBtn">Login</button>
+
   <div id="notes_container" class="container-fluid">
 
   </div>
@@ -77,7 +76,7 @@
         </div>
         <input type="hidden" value='' name="id"/>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger btn-block" data-dismiss="modal" id="modal_note_delete" name="modal_note_delete">Delete Note</button>
         </div>
       </div>
 
@@ -91,7 +90,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<script src="moment.js"></script>
+<script src="moment-timezone.js"></script>
 
 <script>
 $( "#signout" ).on("click",function( event ) {
@@ -100,7 +100,7 @@ $.get("logout.php");
 $.ajax({
         url: "logout.php",
         success: function(data){
-            window.location = "signin.php";
+            window.location = "signIn.php";
         }
       });
 
@@ -120,7 +120,10 @@ $.ajax({ url: "listNotes.php",
         success: function(data){
 
           for(var i=0;i<data.Notes.length;i++){
-                $('#notes_container').append('<div class="col-sm-3 note"><div class="inner-note"><span class="note-title-label"> Title: </span>' + data.Notes[i].title + '<button type="button" data-toggle="modal"  class="btn btn-default btn-xs edit-btn" id='+data.Notes[i].id+'><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button><br/><span class="note-body-label">Body: </span>' + data.Notes[i].body + '<br/><div class="createdby-div"><span class="note-createdby-label">Created By: </span>' +data.Notes[i].createdby+ '</div></div></div>');
+
+            var timestamp = moment(data.Notes[i].created_at).format('LLL');
+
+                $('#notes_container').append('<div class="col-sm-3 note"><div class="inner-note"><span class="note-title-label"> Title: </span>' + data.Notes[i].title + '<button type="button" data-toggle="modal"  class="btn btn-default btn-xs edit-btn" id='+data.Notes[i].id+'><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button><br/><span class="note-body-label">Body: </span>' + data.Notes[i].body + '<br/><div class="createdby-div"><span class="note-createdby-label">Created By: </span>' +data.Notes[i].createdby+ ', on '+ timestamp+'</div></div></div>');
 
           }
 
@@ -154,6 +157,18 @@ $.ajax({ url: "listNotes.php",
                                            },
                             success: function(data){
 
+                            }});
+                            location.reload();
+                });
+
+                $("#modal_note_delete").click(function(){
+
+                    $.ajax({ url: "deletenote.php",
+                            dataType:'json',
+                            type:'POST',
+                            data: {noteID : id},
+                            success: function(data){
+                                alert("succss");
                             }});
                             location.reload();
                 });

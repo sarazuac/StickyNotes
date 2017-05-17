@@ -17,19 +17,7 @@
 
 <body>
   <div>
-    <!-- <a href="signin.php">Sign in</a>
-  </div>
-<h3>Sign Up!</h3>
-  <div>
-    <form id="signin-form">
 
-    <input type="text"  id="name" name="name"/>
-    <input type="text"  id="email" name="email"/>
-    <input type="password"  id="password" name="password"/>
-    <input type="password"  id="confirm_password" name="confirm_password"/>
-    <button type="button" id="submit">Sign Up!</button>
-
-</form> -->
 <div  id="error_banner" >
 
 </div>
@@ -41,7 +29,7 @@
         <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Confirm Password" required="true">
         <div class="checkbox">
           <label>
-            <a href="signin.php">Already a Member? Sign in!</a>
+            <a href="signIn.php">Already a Member? Sign in!</a>
           </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="button" id="submit">Sign in</button>
