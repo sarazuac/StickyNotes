@@ -6,6 +6,7 @@ $email = $_POST["email"];
 $uPassword = $_POST["password"];
 $_SESSION['signed_in']  = 0;
 
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection

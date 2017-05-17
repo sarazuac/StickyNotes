@@ -70,8 +70,8 @@
   },
 
      success: function(data){
-       console.log("Success");
-       alert(data);
+       //console.log("Success");
+       //alert(data);
        if(data==1){
          window.location = "index.php";
        }
